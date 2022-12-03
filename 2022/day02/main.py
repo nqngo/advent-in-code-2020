@@ -1,5 +1,3 @@
-from collections import deque
-
 data = ""
 
 with open('input.txt', 'r') as src:
