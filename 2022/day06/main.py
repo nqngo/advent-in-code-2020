@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 data = ""
 
 with open('input.txt', 'r') as src:
