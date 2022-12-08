@@ -1,6 +1,6 @@
 data = ""
 
-with open('test.txt', 'r') as src:
+with open('input.txt', 'r') as src:
   # Parse the dataset
   data = [ list(map(int, item.rstrip())) for item in src.readlines() ]
 
@@ -43,44 +43,38 @@ def part2(data, data2):
     row_post = data[x][y+1:]
     col_pre = data2[y][:x]
     col_post = data2[y][x+1:]
-    print("tree", tree)
-    print(row_pre, row_post, col_pre, col_post)
     
     if len(row_pre) > 1:
       seen = 1
-      for i in reversed(row_pre):
+      for i in reversed(row_pre[1:]):
         if tree > i:
           seen += 1
         else:
           break
-      print("rp", seen)
       score *= seen
     if len(row_post) > 1:
       seen = 1
-      for i in row_post:
+      for i in row_post[:-1]:
         if tree > i:
           seen += 1
         else:
           break
-      print("rpp", seen)
       score *= seen
-    if col_pre:
+    if len(col_pre) > 1:
       seen = 1
-      for i in reversed(col_pre):
+      for i in reversed(col_pre[1:]):
         if tree > i:
           seen += 1
         else:
           break
-      print(seen)
       score *= seen
-    if col_post:
+    if len(col_post) > 1:
       seen = 1
-      for i in col_post:
+      for i in col_post[:-1]:
         if tree > i:
           seen += 1
         else:
           break
-      print(seen)
       score *= seen
     if score > best_score:
       best_score = score
