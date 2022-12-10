@@ -49,6 +49,5 @@ def part2(data):
       else:
         print(".", end="")
     print()
-  return 0
 
-print(part2(data))
+part2(data)
